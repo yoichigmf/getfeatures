@@ -156,6 +156,9 @@ if ( $index > 1 ){
 
     # echo "\nlat ${lat}  ";  //////
     # echo "\nlon ${lon}  ";  //////
+    if ( ! empty($lon) && ! empty($lat) ){
+      $log->addWarning("desc  ${descript}");
+    }
 
 
 
