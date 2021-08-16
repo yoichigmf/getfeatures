@@ -15,6 +15,8 @@ date_default_timezone_set('Asia/Tokyo');
 
 $sheetname = filter_input(INPUT_POST,"sheetname"); //変数の出力。jQueryで指定したキー値optを用いる
 
+$log->addWarning("sheet name 1  ${sheetname}");
+
 $sheetid= filter_input(INPUT_POST,"sheetid"); //変数の出力。jQueryで指定したキー値optを用いる
 
 
