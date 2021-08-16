@@ -156,6 +156,11 @@ if ( $index > 1 ){
     # echo "\nlon ${lon}  ";  //////
     if ( ! empty($lon) && ! empty($lat) ){   //  座標がはいっている場合のみKML出力
 
+
+
+
+
+
       $desc_str = '<![CDATA[';
     #  $dssc_str = $desc_str . '<table>';
 
@@ -163,6 +168,18 @@ if ( $index > 1 ){
       $desc_str  =  $desc_str . $dated . ' ' . $timed;
 
       $desc_str  =   $desc_str . '<BR><BR>';
+
+      $desc_str  = $desc_str . '報告者:'. $user. '<BR><BR>';
+
+      if ( ! empty($purl)  ){  //  url 文字列が null でない場合
+             $pstr = str_replace(array("\r\n", "\r", "\n"), "\n", $purl);
+             $arr = explode("\n", $pstr);
+
+             foreach ( $arr as $iurl ){
+               $desc_str  = $desc_str . "<img src=\"${iurl}\" height=\"200\" width=\"auto\" /><BR><BR>";
+
+             }
+        }
 
       $desc_str  =  $desc_str . $descript ;
       
