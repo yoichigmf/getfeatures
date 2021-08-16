@@ -117,16 +117,9 @@ $geojson = array(
    'features'  => array()
 );
 
+$style_url = '#icon-1899-0288D1';
 
-$output_ar = array();    // array of output data
-
-$uid_ar = array();   //  array of user id
-
-$non_loc_ar = array();  // array of non location data
-
-$ckey = 0;
-
-$non_locr = array();    //  arrray of non location data for a user
+$kml_bd = array( "<name>${sheetname}</name>");
 
 foreach ($sheetd as $index => $cols) {
 
@@ -156,8 +149,19 @@ if ( $index > 1 ){
 
     # echo "\nlat ${lat}  ";  //////
     # echo "\nlon ${lon}  ";  //////
-    if ( ! empty($lon) && ! empty($lat) ){
+    if ( ! empty($lon) && ! empty($lat) ){   //  座標がはいっている場合のみKML出力
       $log->addWarning("desc  ${descript}");
+      $kml_bd[] = '<Placemark>';
+      $kml_bd[] = "<description>${descript}</description>";
+      $kml_bd[] = "<styleUrl>${style_url}</styleUrl>";      
+      $kml_bd[] = "<name>${dist}</name>";
+      $kml_bd[] = '<Point>';
+      $kml_bd[] = '<coordinates>';
+      $kml_bd[] = "${lon},${lat}";
+      $kml_bd[] = '</coordinates>';
+      $kml_bd[] = '</Point>';
+      $kml_bd[] = '</Placemark>';
+
     }
 
 
@@ -175,6 +179,8 @@ if ( $index > 1 ){
      //header('Content-type: application/vnd.google-earth.kml+xml');
      echo $kmlOutput;
 
+    
+
      $fp = fopen('styles/style_mappin.xml','r');
 
      while (!feof($fp)){
@@ -182,7 +188,15 @@ if ( $index > 1 ){
       $txt = fgets($fp);
       echo $txt;
      }
+     echo '<Folder>';
 
+    
+
+     $kmlOutput2 = join("\n",  $kml_bd );
+
+     echo $kmlOutput2;
+
+     echo '</Folder>';
 
      echo ' </Document>';
      echo '</kml>';
