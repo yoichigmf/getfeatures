@@ -155,9 +155,23 @@ if ( $index > 1 ){
     # echo "\nlat ${lat}  ";  //////
     # echo "\nlon ${lon}  ";  //////
     if ( ! empty($lon) && ! empty($lat) ){   //  座標がはいっている場合のみKML出力
-      $log->addWarning("desc  ${descript}");
+
+      $desc_str = '<![CDATA[';
+    #  $dssc_str = $desc_str . '<table>';
+
+    #  $dsc_str  = $desc_str . '</table>';
+      $desc_str  =  $desc_str . $dated . ' ' . $timed;
+
+      $desc_str  =   $desc_str . '<BR><BR>';
+
+      $desc_str  =  $desc_str . $descript ;
+      
+      $desc_str  = $desc_str . ']]>';
+
+
+      $log->addWarning("desc ${desc_str}");
       $kml_bd[] = '<Placemark>';
-      $kml_bd[] = "<description>${descript}</description>";
+      $kml_bd[] = "<description>${desc_str}</description>";
       $kml_bd[] = "<styleUrl>${style_url}</styleUrl>";      
       $kml_bd[] = "<name>${dist}</name>";
       $kml_bd[] = '<Point>';
