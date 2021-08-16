@@ -1,7 +1,7 @@
 <?php
 //header('Content-Type: text/html; charset=UTF-8');
 require_once __DIR__ . '/vendor/autoload.php';
-include_once __DIR__.'/php/report_bot.php';
+include_once __DIR__.'functions.php';
 
 
 use Monolog\Logger;
@@ -20,7 +20,7 @@ if (!session_id()) {
 //    id token の取得
 
 
-$client_secret = getenv("CLIENT_SECRET");
+//$client_secret = getenv("CLIENT_SECRET");
 
 $title_string = getenv("TITLE");
 
@@ -29,8 +29,12 @@ if ( empty($title_string )) {
 }
 
 
+$sheet_id = getenv("SPREADSHEET_ID");
+$client_str =  getenv("authstr");
 
-$log->addWarning( "client_secret ${client_secret}");
+$sheet_names = Getsheets($sheet_id, $client_str);
+
+//$log->addWarning( "client_secret ${client_secret}");
 
 if ( (!empty($client_id)) && (!empty($redirect_uri)) && (!empty($client_secret ))){
 
@@ -126,7 +130,7 @@ if ( (!empty($client_id)) && (!empty($redirect_uri)) && (!empty($client_secret )
   print("</script>\n");
 
 
-    readfile(__DIR__ . '/pg/map.html');
+   // readfile(__DIR__ . '/pg/map.html');
   }
   else {
      $loginm = urlencode("情報調査LINEボットと友達になっていないと地図は閲覧できません");
@@ -149,7 +153,18 @@ print("<body>");
 print("<H1>");
 print( $title_string);
 print("</H1>");
+
+
+
+
+foreach($sheet_names as $sheet) {
+  print $sheet;
+
+}
+
 print("</body>");
+
+
 
 //    readfile(__DIR__ . '/pg/map.html');
 }
