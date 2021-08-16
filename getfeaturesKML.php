@@ -22,7 +22,7 @@ if( isset($_GET['sheetname'])){
 $sheetid = "";
 
 if( isset($_GET['sheetid'])){
-   $sheetid = $_GET['sheetname'];
+   $sheetid = $_GET['sheetid'];
 }
 
 
