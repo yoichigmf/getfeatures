@@ -163,7 +163,7 @@ var_dump($sheet_names);
 
 foreach($sheet_names as $sheet_n) {
 $sn = $sheet_n;
-print $sheet_n ;
+print $sn;
 
   print "<a href=\"getfeaturesKML.php?sheetname=${sn}&sheetid=${sheet_id}>";
   print $sn;
