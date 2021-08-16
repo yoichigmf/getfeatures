@@ -306,7 +306,7 @@ $log->addWarning("client_name = ${client_name}\n");
      header('Content-type: application/vnd.google-earth.kml+xml');
      echo $kmlOutput;
 
-     $fp = fopen('styles/style_mappin.txt','r');
+     $fp = fopen('styles/style_mappin.xml','r');
 
      while (!feof($fp)){
 
