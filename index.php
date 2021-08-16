@@ -158,7 +158,7 @@ print("<H1>");
 print( $title_string);
 print("</H1>");
 
-$download = "0";
+$download = "1";
 
 //var_dump($sheet_names);
 

@@ -71,10 +71,12 @@ $sheetd = GetSheet( $spreadsheetId, $sheetname, $client );
 $isdone = false;
 
 
-$kml = array('<?xml version="1.0" encoding="UTF-8"?>');
-$kml[] = '<kml xmlns="http://earth.google.com/kml/2.1">';
-$kml[] = ' <Document>';
-$kml[] = ' <Style id="restaurantStyle">';
+$kml_hd = array('<?xml version="1.0" encoding="UTF-8"?>');
+$kml_hd[] = '<kml xmlns="http://earth.google.com/kml/2.2">';
+$kml_hd[] = ' <Document>';
+
+/*
+$kml_hd[] = ' <Style id="restaurantStyle">';
 $kml[] = ' <IconStyle id="restuarantIcon">';
 $kml[] = ' <Icon>';
 $kml[] = ' <href>http://maps.google.com/mapfiles/kml/pal2/icon63.png</href>';
@@ -88,7 +90,7 @@ $kml[] = ' <href>http://maps.google.com/mapfiles/kml/pal2/icon27.png</href>';
 $kml[] = ' </Icon>';
 $kml[] = ' </IconStyle>';
 $kml[] = ' </Style>';
-
+*/
 
 
 $geojson = array(
@@ -297,11 +299,24 @@ $log->addWarning("client_name = ${client_name}\n");
 
      }  //  foreach
 
-     $kml[] = ' </Document>';
-     $kml[] = '</kml>';
-     $kmlOutput = join("\n", $kml);
+ 
+     $kmlOutput = join("\n", $kml_hd);
+
+
      header('Content-type: application/vnd.google-earth.kml+xml');
      echo $kmlOutput;
+
+     $fp = fopen('styles/style_mappin.txt','r');
+
+     while (!feof($fp)){
+
+      $txt = fgets($fp);
+      echo $txt;
+     }
+
+
+     echo ' </Document>';
+     echo '</kml>';
 
 
    //  $retjson = json_encode( $geojson  );      // make json
