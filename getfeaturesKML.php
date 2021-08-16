@@ -133,7 +133,7 @@ foreach ($sheetd as $index => $cols) {
 //echo "\nindex ${index}  ";  //////
 //echo "\ndate ${dated}  ";  //////
 
-if ( $index > 2 ){
+if ( $index > 1 ){
      $dated = $cols[0];
      $timed = $cols[1];
 
@@ -147,12 +147,15 @@ if ( $index > 2 ){
      $purl = $cols[7];
 
      $lon = $cols[8];
-     $lat = $cols[8];
+     $lat = $cols[9];
 
-     echo "\nurl  ${purl}";
+     $log->addWarning("url  ${purl}");
+     $log->addWarning("lat  ${lat}");
+     $log->addWarning("lon  ${lon}");
+     #echo "\nurl  ${purl}";
 
-     echo "\nlat ${lat}  ";  //////
-     echo "\nlon ${lon}  ";  //////
+    # echo "\nlat ${lat}  ";  //////
+    # echo "\nlon ${lon}  ";  //////
 
 
 
