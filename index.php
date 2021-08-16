@@ -158,6 +158,7 @@ print("<H1>");
 print( $title_string);
 print("</H1>");
 
+$download = "0";
 
 //var_dump($sheet_names);
 
@@ -165,7 +166,7 @@ for ( $i=0; $i < count($sheet_names); $i++){
   $sn = $sheet_names[$i];
   //print $sn;
 
-  print "<a href=\"getfeaturesKML.php?sheetname=${sn}&sheetid=${sheet_id}\">";
+  print "<a href=\"getfeaturesKML.php?sheetname=${sn}&sheetid=${sheet_id}&download=${download}\">";
   print $sn;
   print "</a>";
   print "<BR>";

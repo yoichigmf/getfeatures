@@ -13,19 +13,14 @@ $log->pushHandler(new StreamHandler('php://stderr', Logger::WARNING));
 
 date_default_timezone_set('Asia/Tokyo');
 
-$fname = "2222広島.kml";
+$sheetname = filter_input(INPUT_POST,"sheetname"); //変数の出力。jQueryで指定したキー値optを用いる
 
-header("Content-Type:application/vnd.google-earth.kml+xml; charset=UTF-8"); //ヘッダー情報の明記。必須。
-header("Content-Disposition: attachment; filename=${fname}");
-header("Content-Transfer-Encoding: binary");
+$sheetid= filter_input(INPUT_POST,"sheetid"); //変数の出力。jQueryで指定したキー値optを用いる
 
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+$download_f= filter_input(INPUT_POST,"dwnload"); //変数の出力。jQueryで指定したキー値optを用いる
+　　　　　　　　　　　　　　　　　　　　　　　　　　　//  download flag
 
 
- $sheetname = filter_input(INPUT_POST,"sheetname"); //変数の出力。jQueryで指定したキー値optを用いる
-
- $sheetid= filter_input(INPUT_POST,"sheetid"); //変数の出力。jQueryで指定したキー値optを用いる
 
 
 
@@ -47,8 +42,21 @@ $client = getGoogleSheetClient();
      }
  }
 
+ $fname = "${sheetname}.kml";
+ 
 
+ header("Content-Type:application/vnd.google-earth.kml+xml; charset=UTF-8"); //ヘッダー情報の明記。必須。
 
+ if ( ! empty($download_f)  ){
+    if ( $download_f ){
+   header("Content-Disposition: attachment; filename=${fname}");
+   header("Content-Transfer-Encoding: binary");
+    }
+ }
+ 
+ header('Access-Control-Allow-Origin: *');
+ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
+ 
 
 $sheetd = GetSheet( $spreadsheetId, $sheetname, $client );
 
