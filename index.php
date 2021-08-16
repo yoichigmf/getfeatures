@@ -159,11 +159,11 @@ print( $title_string);
 print("</H1>");
 
 
-var_dump($sheet_names);
+//var_dump($sheet_names);
 
 for ( $i=0; $i < count($sheet_names); $i++){
   $sn = $sheet_names[$i];
-  print $sn;
+  //print $sn;
 
   print "<a href=\"getfeaturesKML.php?sheetname=${sn}&sheetid=${sheet_id}\">";
   print $sn;
