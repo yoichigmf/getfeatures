@@ -42,13 +42,22 @@ $client = getGoogleSheetClient();
  $fname = "${sheetname}.kml";
 
 
- header("Content-Type:application/vnd.google-earth.kml+xml; charset=UTF-8"); //ヘッダー情報の明記。必須。
+ 
 
  if ( ! empty($download_f)  ){
-    if ( $download_f ){
+    if ( $download_f > 0 ){
+   header("Content-Type:application/vnd.google-earth.kml+xml; charset=UTF-8"); //ヘッダー情報の明記。必須。
    header("Content-Disposition: attachment; filename=${fname}");
    header("Content-Transfer-Encoding: binary");
     }
+    else {
+       
+   header("Content-Type: application/json; charset=UTF-8"); //ヘッダー情報の明記。必須。
+    }
+ }
+ else {
+
+   header("Content-Type: application/json; charset=UTF-8"); //ヘッダー情報の明記。必須。
  }
  
  header('Access-Control-Allow-Origin: *');
