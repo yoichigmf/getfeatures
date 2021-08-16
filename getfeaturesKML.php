@@ -25,6 +25,11 @@ if( isset($_GET['sheetid'])){
    $sheetid = $_GET['sheetid'];
 }
 
+$download_f = 0;
+
+if( isset($_GET['download'])){
+   $download_f = $_GET['download'];
+}
 
 #$sheetname = filter_input(INPUT_POST,"sheetname"); //変数の出力。jQueryで指定したキー値optを用いる
 
@@ -33,7 +38,7 @@ $log->addWarning("sheet name 1  ${sheetname}");
 #$sheetid= filter_input(INPUT_POST,"sheetid"); //変数の出力。jQueryで指定したキー値optを用いる
 
 
-$download_f= filter_input(INPUT_POST,"download");
+//$download_f= filter_input(INPUT_POST,"download");
 
 //変数の出力。jQueryで指定したキー値optを用いる
 //$env_name  = getenv('SHEET_NAME');
