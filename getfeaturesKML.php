@@ -17,17 +17,14 @@ $sheetname = filter_input(INPUT_POST,"sheetname"); //変数の出力。jQueryで
 
 $sheetid= filter_input(INPUT_POST,"sheetid"); //変数の出力。jQueryで指定したキー値optを用いる
 
-$download_f= filter_input(INPUT_POST,"dwnload"); //変数の出力。jQueryで指定したキー値optを用いる
-　　　　　　　　　　　　　　　　　　　　　　　　　　　//  download flag
 
+$download_f= filter_input(INPUT_POST,"download");
 
-
-
-
-$envname  = getenv('SHEET_NAME');
-$envid= getenv('SPREADSHEET_ID');
- //$sheetname = 'シート1';s
- $spreadsheetId = getenv('SPREADSHEET_ID');
+//変数の出力。jQueryで指定したキー値optを用いる
+//$env_name  = getenv('SHEET_NAME');
+//$envid= getenv('SPREADSHEET_ID');
+ //$sheetname = 'シート1';
+ //$spreadsheetId = getenv('SPREADSHEET_ID');
 
  if ( ! empty($sheetid)  ){
      $spreadsheetId = $sheetid;
@@ -43,7 +40,7 @@ $client = getGoogleSheetClient();
  }
 
  $fname = "${sheetname}.kml";
- 
+
 
  header("Content-Type:application/vnd.google-earth.kml+xml; charset=UTF-8"); //ヘッダー情報の明記。必須。
 
