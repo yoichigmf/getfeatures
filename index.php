@@ -34,7 +34,7 @@ if ( empty($title_string )) {
 
 
 $sheet_id = getenv("SPREADSHEET_ID");
-$client_str =  getenv("authstr");
+$client_str =   getGoogleSheetClient();
 
 $sheet_names = Getsheets($sheet_id, $client_str);
 
