@@ -161,11 +161,11 @@ print("</H1>");
 
 var_dump($sheet_names);
 
-foreach($sheet_names as $sheet) {
+foreach($sheet_names as $sheet_n) {
+$sn = $sheet_n;
 
-
-  print "<a href=\"getfeaturesKML.php?sheetname=${sheet}&sheetid=${sheet_id}>";
-  print $sheet;
+  print "<a href=\"getfeaturesKML.php?sheetname=${sn}&sheetid=${sheet_id}>";
+  print $sn;
   print "</a>";
   print "<BR>";
 
