@@ -13,11 +13,24 @@ $log->pushHandler(new StreamHandler('php://stderr', Logger::WARNING));
 
 date_default_timezone_set('Asia/Tokyo');
 
-$sheetname = filter_input(INPUT_POST,"sheetname"); //変数の出力。jQueryで指定したキー値optを用いる
+
+$sheetname = "";
+if( isset($_GET['sheetname'])){
+    $sheetname = $_GET['sheetname'];
+}
+
+$sheetid = "";
+
+if( isset($_GET['sheetid'])){
+   $sheetid = $_GET['sheetname'];
+}
+
+
+#$sheetname = filter_input(INPUT_POST,"sheetname"); //変数の出力。jQueryで指定したキー値optを用いる
 
 $log->addWarning("sheet name 1  ${sheetname}");
 
-$sheetid= filter_input(INPUT_POST,"sheetid"); //変数の出力。jQueryで指定したキー値optを用いる
+#$sheetid= filter_input(INPUT_POST,"sheetid"); //変数の出力。jQueryで指定したキー値optを用いる
 
 
 $download_f= filter_input(INPUT_POST,"download");
