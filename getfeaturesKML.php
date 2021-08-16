@@ -74,7 +74,7 @@ $isdone = false;
 $kml_hd = array('<?xml version="1.0" encoding="UTF-8"?>');
 $kml_hd[] = '<kml xmlns="http://earth.google.com/kml/2.2">';
 $kml_hd[] = ' <Document>';
-$kml_hd[] = ' <name>${sheetname}</name>';
+$kml_hd[] =  "<name>${sheetname}</name>";
 $kml_hd[] =  '<description/>';
 
 
@@ -115,8 +115,10 @@ $non_locr = array();    //  arrray of non location data for a user
 
 foreach ($sheetd as $index => $cols) {
 
-echo "\nindex ${index}  ";  //////
-echo "\ndate ${dated}  ";  //////
+//echo "\nindex ${index}  ";  //////
+//echo "\ndate ${dated}  ";  //////
+
+if ( $index > 2 ){
      $dated = $cols[0];
      $timed = $cols[1];
 
@@ -129,11 +131,19 @@ echo "\ndate ${dated}  ";  //////
 
      $purl = $cols[7];
 
-     $lot = $cols[8];
+     $lon = $cols[8];
      $lat = $cols[8];
 
+     echo "\nurl  ${purl}";
+
+     echo "\nlat ${lat}  ";  //////
+     echo "\nlon ${lon}  ";  //////
+
+
+
  
-     
+}
+
   
      }  //  foreach
 
