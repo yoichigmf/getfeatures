@@ -42,7 +42,7 @@ $client = getGoogleSheetClient();
  $fname = "${sheetname}.kml";
 
 
- 
+ $log->addWarning("sheet name   ${sheetname}");
 
  if ( ! empty($download_f)  ){
     if ( $download_f > 0 ){
