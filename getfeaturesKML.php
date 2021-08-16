@@ -26,7 +26,7 @@ $download_f= filter_input(INPUT_POST,"download");
  //$sheetname = 'シート1';
  $spreadsheetId = getenv('SPREADSHEET_ID');
 
- if ( ! empty($sheetid)  ){s
+ if ( ! empty($sheetid)  ){
      $spreadsheetId = $sheetid;
  }
 
