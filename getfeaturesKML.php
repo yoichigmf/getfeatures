@@ -13,7 +13,12 @@ $log->pushHandler(new StreamHandler('php://stderr', Logger::WARNING));
 
 date_default_timezone_set('Asia/Tokyo');
 
-header("Content-Type: application/json; charset=UTF-8"); //ヘッダー情報の明記。必須。
+
+
+header("Content-Type:application/vnd.google-earth.kml+xml; charset=UTF-8"); //ヘッダー情報の明記。必須。
+header("Content-Disposition: attachment; filename=sample.kml");
+header("Content-Transfer-Encoding: binary");
+
 header('Access-Control-Allow-Origin: *');
 header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
 
