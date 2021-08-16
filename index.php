@@ -144,7 +144,12 @@ print("<title>" . $title_string  . "</title>");
 print("<script>\n");
 print("title_string =\"" . $title_string ."\";\n");
 print("</script>\n");
-
+print("</head>");
+print("<body>");
+print("<H1>");
+print( $title_string);
+print("</H1>");
+print("</body>");
 
 //    readfile(__DIR__ . '/pg/map.html');
 }
