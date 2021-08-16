@@ -1,8 +1,8 @@
 <?php
-//header('Content-Type: text/html; charset=UTF-8');
-require_once __DIR__ . '/vendor/autoload.php';
-require 'functions.php';
 
+require_once __DIR__ . '/vendor/autoload.php';
+
+require 'functions.php';
 
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
@@ -10,6 +10,10 @@ use Monolog\Handler\StreamHandler;
 
 $log = new Logger('name');
 $log->pushHandler(new StreamHandler('php://stderr', Logger::WARNING));
+
+date_default_timezone_set('Asia/Tokyo');
+
+
 
 
 if (!session_id()) {
