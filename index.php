@@ -36,7 +36,7 @@ if ( empty($title_string )) {
 $sheet_id = getenv("SPREADSHEET_ID");
 $client_str =   getGoogleSheetClient();
 
-$sheet_names = Getsheets($sheet_id, $client_str);
+$sheet_names = GetsheetNames($sheet_id, $client_str);
 
 //$log->addWarning( "client_secret ${client_secret}");
 

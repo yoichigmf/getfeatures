@@ -57,6 +57,23 @@ function GetFirstSheetName( $spreadsheetID, $client ){
    return $ret ;
 
 }
+
+function GetsheetNames($spreadsheetID, $client) {
+    $sheets = array();
+
+
+    $sheetService = new Google_Service_Sheets($client);
+    $response = $sheetService->spreadsheets->get($spreadsheetID);
+
+    foreach($response->getSheets() as $s) {
+        $sheets[] = $s['properties']['title'];
+    }
+ 
+   
+    return $sheets;
+}
+
+
 function Getsheets($spreadsheetID, $client) {
     $sheets = array();
 
