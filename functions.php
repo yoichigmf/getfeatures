@@ -26,6 +26,20 @@ function getGoogleSheetClient() {
 
 }
 
+function renameGoogleUrl( $imgUrl ){
+
+   $arr = array();
+   $arr = explode('/', $imgUrl);
+
+   $fid = $arr[5];
+   
+
+   $newurl = 'https://drive.google.com/uc?export=view&id=' . $fid;
+
+    return $newurl;
+
+}
+
 function GetSheet( $sheetid, $sheetname, $client ) {
 //  $client = getGoogleSheetClient();
 

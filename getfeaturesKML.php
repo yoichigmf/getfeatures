@@ -170,13 +170,19 @@ if ( $index > 1 ){
       $desc_str  =   $desc_str . '<BR><BR>';
 
       $desc_str  = $desc_str . '報告者:'. $user. '<BR><BR>';
+      if ( ! empty($isource)  ){
+    
+      $desc_str  = $desc_str . '情報ソース:'. $isource. '<BR><BR>';
+           
+      }
 
       if ( ! empty($purl)  ){  //  url 文字列が null でない場合
              $pstr = str_replace(array("\r\n", "\r", "\n"), "\n", $purl);
              $arr = explode("\n", $pstr);
 
              foreach ( $arr as $iurl ){
-               $desc_str  = $desc_str . "<img src=\"${iurl}\" height=\"200\" width=\"auto\" /><BR><BR>";
+               $nurl = renameGoogleUrl( $iurl );
+               $desc_str  = $desc_str . "<img src=\"${nurl}\" height=\"200\" width=\"auto\" /><BR><BR>";
 
              }
         }
