@@ -164,9 +164,9 @@ print("</H1>");
 foreach($sheet_names as $sheet) {
 
 
-  print "<a href=\"getfeaturesKML.php?sheetname=${sheet}&sheetid=${sheet_id}>"
+  print "<a href=\"getfeaturesKML.php?sheetname=${sheet}&sheetid=${sheet_id}>";
   print $sheet;
-  print "</a>"
+  print "</a>";
   print "<BR>";
 
 }
