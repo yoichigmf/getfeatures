@@ -1,7 +1,7 @@
 <?php
 //header('Content-Type: text/html; charset=UTF-8');
 require_once __DIR__ . '/vendor/autoload.php';
-include_once __DIR__.'functions.php';
+require 'functions.php';
 
 
 use Monolog\Logger;
