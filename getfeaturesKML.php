@@ -91,40 +91,32 @@ $sheetd = GetSheet( $spreadsheetId, $sheetname, $client );
 $isdone = false;
 
 
-$kml_hd = array('<?xml version="1.0" encoding="UTF-8"?>');
-$kml_hd[] = '<kml xmlns="http://earth.google.com/kml/2.2">';
-$kml_hd[] = ' <Document>';
-$kml_hd[] =  "<name>${sheetname}</name>";
-$kml_hd[] =  '<description/>';
+echo '<?xml version="1.0" encoding="UTF-8"?>';
+echo "\n";
+echo '<kml xmlns="http://earth.google.com/kml/2.2">';
+echo "\n";
+echo ' <Document>';
+echo "\n";
+echo  "<name>${sheetname}</name>";
+echo "\n";
+echo '<description/>';
+
+
+$fp = fopen('styles/style_mappin.xml','r');
+
+while (!feof($fp)){
+
+ $txt = fgets($fp);
+ echo $txt;
+}
+echo '<Folder>';
 
 
 
-/*
-$kml_hd[] = ' <Style id="restaurantStyle">';
-$kml[] = ' <IconStyle id="restuarantIcon">';
-$kml[] = ' <Icon>';
-$kml[] = ' <href>http://maps.google.com/mapfiles/kml/pal2/icon63.png</href>';
-$kml[] = ' </Icon>';
-$kml[] = ' </IconStyle>';
-$kml[] = ' </Style>';
-$kml[] = ' <Style id="barStyle">';
-$kml[] = ' <IconStyle id="barIcon">';
-$kml[] = ' <Icon>';
-$kml[] = ' <href>http://maps.google.com/mapfiles/kml/pal2/icon27.png</href>';
-$kml[] = ' </Icon>';
-$kml[] = ' </IconStyle>';
-$kml[] = ' </Style>';
-*/
-
-
-$geojson = array(
-   'type'      => 'FeatureCollection',
-   'features'  => array()
-);
 
 $style_url = '#icon-1899-0288D1';
 
-$kml_bd = array( "<name>${sheetname}</name>");
+echo  "<name>${sheetname}</name>\n";
 
 foreach ($sheetd as $index => $cols) {
 
@@ -161,13 +153,16 @@ if ( $index > 1 ){
 
 
 
-      $desc_str = '<![CDATA[';
+     echo '<![CDATA[';
+
     #  $dssc_str = $desc_str . '<table>';
 
     #  $dsc_str  = $desc_str . '</table>';
       $desc_str  =  $desc_str . $dated . ' ' . $timed;
 
       $desc_str  =   $desc_str . '<BR><BR>';
+
+
 
       $desc_str  = $desc_str . '報告者:'. $user. '<BR><BR>';
       if ( ! empty($isource)  ){
@@ -193,16 +188,16 @@ if ( $index > 1 ){
 
 
       $log->addWarning("desc ${desc_str}");
-      $kml_bd[] = '<Placemark>';
-      $kml_bd[] = "<description>${desc_str}</description>";
-      $kml_bd[] = "<styleUrl>${style_url}</styleUrl>";      
-      $kml_bd[] = "<name>${dist}</name>";
-      $kml_bd[] = '<Point>';
-      $kml_bd[] = '<coordinates>';
-      $kml_bd[] = "${lon},${lat}";
-      $kml_bd[] = '</coordinates>';
-      $kml_bd[] = '</Point>';
-      $kml_bd[] = '</Placemark>';
+      echo  "<Placemark>\n";
+      echo  "<description>${desc_str}</description>\n";
+      echo  "<styleUrl>${style_url}</styleUrl>\n";      
+      echo  "<name>${dist}</name>\n";
+      echo "<Point>\n";
+      echo "<coordinates>\n";
+      echo  "${lon},${lat}";
+      echo  "</coordinates>\n";
+      echo  "</Point>\n";
+      echo  "</Placemark>\n";
 
     }
 
@@ -215,28 +210,14 @@ if ( $index > 1 ){
      }  //  foreach
 
  
-     $kmlOutput = join("\n", $kml_hd);
+     //$kmlOutput = join("\n", $kml_hd);
 
 
      //header('Content-type: application/vnd.google-earth.kml+xml');
-     echo $kmlOutput;
+     //echo $kmlOutput;
 
     
-
-     $fp = fopen('styles/style_mappin.xml','r');
-
-     while (!feof($fp)){
-
-      $txt = fgets($fp);
-      echo $txt;
-     }
-     echo '<Folder>';
-
     
-
-     $kmlOutput2 = join("\n",  $kml_bd );
-
-     echo $kmlOutput2;
 
      echo '</Folder>';
 
