@@ -45,6 +45,8 @@ function renameGoogleUrl( $imgUrl ){
 
 function  OutputPlacemark( $cols, $style_url ){
 
+    global $log;
+    
 
      
 $dated = $cols[0];
