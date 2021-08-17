@@ -149,11 +149,11 @@ if ( $index > 1 ){
     if ( ! empty($lon) && ! empty($lat) ){   //  座標がはいっている場合のみKML出力
 
 
+      echo  "<Placemark>\n";
 
 
 
-
-     echo '<![CDATA[';
+      $desc_str = '<![CDATA[';
 
     #  $dssc_str = $desc_str . '<table>';
 
@@ -188,7 +188,7 @@ if ( $index > 1 ){
 
 
       $log->addWarning("desc ${desc_str}");
-      echo  "<Placemark>\n";
+  
       echo  "<description>${desc_str}</description>\n";
       echo  "<styleUrl>${style_url}</styleUrl>\n";      
       echo  "<name>${dist}</name>\n";
