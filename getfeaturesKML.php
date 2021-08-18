@@ -172,7 +172,7 @@ foreach(  $sheet_names as $sheetn ){
    $pos = strpos( $sheetn, "避難所");
 
    if ( $pos === false){
-      $log->addWarning("sheet name    ${sheetname}");
+      $log->addWarning("sheet name    ${sheetn}");
          }
 
 
