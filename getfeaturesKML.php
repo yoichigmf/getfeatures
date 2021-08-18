@@ -165,7 +165,8 @@ else {
 $client_str =   getGoogleSheetClient();
 
 $sheet_names = GetsheetNames($spreadsheetId, $client_str);
-
+echo '<Folder>';
+echo  "<name>${sheetname}</name>\n";
 
 foreach(  $sheet_names as $sheetn ){
    
@@ -173,10 +174,26 @@ foreach(  $sheet_names as $sheetn ){
 
    if ( $pos === false){
       $log->addWarning("sheet name    ${sheetn}");
+
+      $sheetd = GetSheet( $spreadsheetId, $sheetn, $client );
+
+           foreach ($sheetd as $index => $cols) {
+            if ( $index > 1 ){
+
+               OutputPlacemark( $cols, $style_url );
+     
+     
+                }
+     
+            }
+
+
          }
 
 
+
      }
+     echo '</Folder>';
 }
 
 

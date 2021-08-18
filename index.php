@@ -170,11 +170,15 @@ print "<BR>";
 for ( $i=0; $i < count($sheet_names); $i++){
   $sn = $sheet_names[$i];
   //print $sn;
+  $pos = strpos( $sn, "避難所");
 
-  print "<a href=\"getfeaturesKML.php?sheetname=${sn}&sheetid=${sheet_id}&download=${download}\">";
-  print $sn;
-  print "</a>";
-  print "<BR>";
+   if ( $pos === false){
+          print "<a href=\"getfeaturesKML.php?sheetname=${sn}&sheetid=${sheet_id}&download=${download}\">";
+          print $sn;
+          print "</a>";
+          print "<BR>";
+
+   }
 
 }
 
