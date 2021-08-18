@@ -166,7 +166,7 @@ $client_str =   getGoogleSheetClient();
 
 $sheet_names = GetsheetNames($spreadsheetId, $client_str);
 echo '<Folder>';
-echo  "<name>${sheetname}</name>\n";
+echo  "<name>${stitle}</name>\n";
 
 foreach(  $sheet_names as $sheetn ){
    
