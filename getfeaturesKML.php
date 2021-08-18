@@ -46,6 +46,8 @@ $log->addWarning("sheet name 1  ${sheetname}");
  //$sheetname = 'シート1';
  $spreadsheetId = getenv('SPREADSHEET_ID');
 
+ $date_s = date("Y-m-d_H_i_s"); 
+ $date_f = date("Y-m-d H:i:s"); 
  if ( ! empty($sheetid)  ){
      $spreadsheetId = $sheetid;
  }
@@ -59,7 +61,22 @@ $client = getGoogleSheetClient();
      }
  }
 
+ $stitle = $sheetname;
+
+ $all_flag = 0;
  $fname = "${sheetname}.kml";
+ if ( strcmp($sheetname , "all") == 0){
+     $all_flag = 1;
+     $fname = "${date_s}.kml";
+     $stitle = $$date_f;
+     
+ }
+
+ 
+
+
+ 
+ 
 
 
  $log->addWarning("sheet name   ${sheetname}");
@@ -84,7 +101,7 @@ $client = getGoogleSheetClient();
  header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept');
  
 
-$sheetd = GetSheet( $spreadsheetId, $sheetname, $client );
+
 
 
 
@@ -97,7 +114,7 @@ echo '<kml xmlns="http://earth.google.com/kml/2.2">';
 echo "\n";
 echo ' <Document>';
 echo "\n";
-echo  "<name>${sheetname}</name>";
+echo  "<name>${stitle}</name>";
 echo "\n";
 echo '<description/>';
 
@@ -109,13 +126,18 @@ while (!feof($fp)){
  $txt = fgets($fp);
  echo $txt;
 }
-echo '<Folder>';
+
 
 
 
 
 $style_url = '#icon-1899-0288D1';
 
+//   単一シート出力
+if ( $all_flag == 0 ){
+   $sheetd = GetSheet( $spreadsheetId, $sheetname, $client );
+
+echo '<Folder>';
 echo  "<name>${sheetname}</name>\n";
 
 foreach ($sheetd as $index => $cols) {
@@ -125,20 +147,30 @@ foreach ($sheetd as $index => $cols) {
 
    if ( $index > 1 ){
 
-   OutputPlacemark( $cols, $style_url );
-   
+          OutputPlacemark( $cols, $style_url );
 
-    }
+
+           }
 
 
   
      }  //  foreach
 
- 
-    
+     echo '</Folder>';
+}
+else {
+
+//   全シート出力
+
+$client_str =   getGoogleSheetClient();
+
+$sheet_names = GetsheetNames($spreadsheetId, $client_str);
+
+
+}
     
 
-     echo '</Folder>';
+  
 
      echo ' </Document>';
      echo '</kml>';

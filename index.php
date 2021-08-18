@@ -165,6 +165,7 @@ $download = "1";
 print "<a href=\"getfeaturesKML.php?sheetname=ALL&sheetid=${sheet_id}&download=${download}\">";
 print "全部";
 print "</a>";
+print "<BR>";
 
 for ( $i=0; $i < count($sheet_names); $i++){
   $sn = $sheet_names[$i];
