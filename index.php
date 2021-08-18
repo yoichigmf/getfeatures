@@ -162,6 +162,10 @@ $download = "1";
 
 //var_dump($sheet_names);
 
+print "<a href=\"getfeaturesKML.php?sheetname=ALL&sheetid=${sheet_id}&download=${download}\">";
+print "全部"
+print "</a>";
+
 for ( $i=0; $i < count($sheet_names); $i++){
   $sn = $sheet_names[$i];
   //print $sn;
