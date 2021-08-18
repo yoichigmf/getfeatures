@@ -167,6 +167,12 @@ $client_str =   getGoogleSheetClient();
 $sheet_names = GetsheetNames($spreadsheetId, $client_str);
 
 
+foreach(  $sheet_names as $sheetn ){
+
+   $log->addWarning("sheet name   ${sheetn}");
+   }
+
+
 }
     
 

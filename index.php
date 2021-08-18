@@ -162,7 +162,7 @@ $download = "1";
 
 //var_dump($sheet_names);
 
-print "<a href=\"getfeaturesKML.php?sheetname=ALL&sheetid=${sheet_id}&download=${download}\">";
+print "<a href=\"getfeaturesKML.php?sheetname=all&sheetid=${sheet_id}&download=${download}\">";
 print "全部";
 print "</a>";
 print "<BR>";
