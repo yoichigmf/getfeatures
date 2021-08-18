@@ -79,7 +79,7 @@ $client = getGoogleSheetClient();
  
 
 
- $log->addWarning("sheet name   ${sheetname}");
+ $log->addWarning("sheet name  1  ${sheetname}");
 
  if ( ! empty($download_f)  ){
     if ( $download_f > 0 ){
@@ -168,13 +168,17 @@ $sheet_names = GetsheetNames($spreadsheetId, $client_str);
 
 
 foreach(  $sheet_names as $sheetn ){
+   
+   $pos = strpos( $sheetn, "避難所");
 
-   $log->addWarning("sheet name   ${sheetn}");
-   }
+   if ( $pos === false){
+      $log->addWarning("sheet name    ${sheetname}");
+         }
 
 
+     }
 }
-    
+
 
   
 
